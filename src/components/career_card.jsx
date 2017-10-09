@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class CareerCard extends Component {
   constructor(props) {
@@ -9,16 +9,15 @@ class CareerCard extends Component {
   render() {
     return (
       <div>
-        <img src={this.props.careers[0].image} />
-        <h2>{this.props.careers[0].title}</h2>
-        <p>{this.props.careers[0].tagline}</p>
+        <img src={this.props.career.image} />
+        <h2>{this.props.career.title}</h2>
+        <p>{this.props.career.tagline}</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  careers: state.careers
-});
-
-export default connect(mapStateToProps)(CareerCard);
+CareerCard.propTypes = {
+  career: PropTypes.obj
+};
+export default CareerCard;
