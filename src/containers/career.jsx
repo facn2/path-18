@@ -5,6 +5,8 @@ const Career = () => (
   <div>
     <h1>This is career page</h1>
     <NavBar />
+    <button>LIKE</button>
+    <button>DISLIKE</button>
   </div>
 );
 
