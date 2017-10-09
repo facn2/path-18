@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import Routes from './router.jsx';
-import App from './containers/app.jsx';
+import Career from './containers/career.jsx';
 import Style from '../public/style.css';
 import storeConfigure from './store.config';
 
