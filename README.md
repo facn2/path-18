@@ -65,10 +65,6 @@ Take a look at the prototype on [figma](https://www.figma.com/file/Mm2muc8uV1Km4
 
 * React
 
-**Databases**
-
-* MongoDB
-
 **Testing**
 
 * Mocha
