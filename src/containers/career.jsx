@@ -13,11 +13,12 @@ class Career extends Component {
   render() {
     return (
       <div>
-        <h1>This is career page</h1>
         <NavBar />
         <CareerCard career={this.props.careers[1]}/>
-        <button>LIKE</button>
-        <button>DISLIKE</button>
+        <div className="buttonContainer">
+          <button>LIKE</button>
+          <button>DISLIKE</button>
+        </div>
       </div>
     );
   }
