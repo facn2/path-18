@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBar from '../components/nav_bar.jsx';
 import CareerCard from '../components/career_card.jsx';
-import Swipe from '../helpers/swipe';
 
 class Career extends Component {
   constructor(props) {

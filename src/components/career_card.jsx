@@ -5,10 +5,10 @@ let touchStart = 0;
 let touchEnd = 0;
 
 const handleSwipe = (event) => {
-  if (touchEnd < touchStart - 10) {
+  if (touchEnd < touchStart - 30) {
     console.log('swiped: left!');
   }
-  if (touchEnd > touchStart + 10) {
+  if (touchEnd > touchStart + 30) {
     console.log('swiped: right!');
   }
 };
