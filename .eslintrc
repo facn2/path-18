@@ -12,9 +12,10 @@
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "globals": {
     "Style": true,
+    "localStorage": true,
     "document": true,
     "describe": true,
-    "it":true,
-    "expect":true
+    "it": true,
+    "expect": true
   }
 }
