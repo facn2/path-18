@@ -17,7 +17,7 @@ class Career extends Component {
 
   nextCareer() {
     const stateIndex = this.state.currentIndex;
-    if (this.state.currentIndex < this.props.careers.length - 1) {
+    if (stateIndex < this.props.careers.length - 1) {
       this.setState({
         currentIndex: stateIndex + 1
       });
