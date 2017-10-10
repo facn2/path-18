@@ -1,29 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-let touchStart = 0;
-let touchEnd = 0;
-
-const handleSwipe = (event) => {
-  if (touchEnd < touchStart - 30) {
-    console.log('swiped: left!');
-  }
-  if (touchEnd > touchStart + 30) {
-    console.log('swiped: right!');
-  }
-};
-
-const handleTouchStart = (event) => {
-  touchStart = event.changedTouches[0].screenX;
-  console.log('start ', touchStart);
-};
-
-const handleTouchEnd = (event) => {
-  touchEnd = event.changedTouches[0].screenX;
-  console.log('end ', touchEnd);
-  handleSwipe();
-};
-
 const CareerCard = ({ career }) => (
   <div
     onTouchStart={event => handleTouchStart(event)}
