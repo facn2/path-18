@@ -6,7 +6,6 @@ import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
 
-
 class Career extends Component {
   constructor(props) {
     super(props);
@@ -33,19 +32,26 @@ class Career extends Component {
 
   render() {
     return (
-      <div>
-        <h1>This is career page</h1>
-        <NavBar />
-        <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
-        <button>info</button>
-        <CareerInfo career={this.props.careers[1]}/>
-        <button id='like' onClick={() => {
-          this.nextCareer();
-        }}>LIKE</button>
-        <button id='dislike' onClick={() => {
-          this.nextCareer();
-        }}>DISLIKE</button>
-      </div>
+
+        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+	<div class="flipper">
+		<div class="front">
+      <h1>This is career page</h1>
+      <NavBar />
+      <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+      <button>info</button>
+		</div>
+		<div class="back">
+      <CareerInfo career={this.props.careers[1]}/>
+      <button id='like' onClick={() => {
+        this.nextCareer();
+      }}>LIKE</button>
+      <button id='dislike' onClick={() => {
+        this.nextCareer();
+      }}>DISLIKE</button>
+		</div>
+	</div>
+</div>
     );
   }
 }
