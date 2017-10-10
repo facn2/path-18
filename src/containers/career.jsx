@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import NavBar from './../components/nav_bar.jsx';
-import CareerCard from './../components/career_card.jsx';
+import NavBar from '../components/nav_bar.jsx';
+import CareerCard from '../components/career_card.jsx';
 
 class Career extends Component {
   constructor(props) {
@@ -33,11 +33,11 @@ class Career extends Component {
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <CareerCard career={this.props.careers[this.state.currentIndex]}/>
-        <button onClick={() => {
+        <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+        <button id='like' onClick={() => {
           this.nextCareer();
         }}>LIKE</button>
-        <button onClick={() => {
+        <button id='dislike' onClick={() => {
           this.nextCareer();
         }}>DISLIKE</button>
       </div>
