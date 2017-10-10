@@ -7,16 +7,30 @@ import CareerCard from './../components/career_card.jsx';
 class Career extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentIndex: 0
+    };
+    this.addToLocal = this.addToLocal.bind(this);
   }
 
+  addToLocal() {
+    const CareerIndex = this.state.currentIndex;
+    if (localStorage.liked) {
+      const Liked = JSON.parse(localStorage.liked);
+      Liked.push(CareerIndex);
+      localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage)
+    } else {
+      const Liked = [this.state.currentIndex];
+      localStorage.setItem('liked', JSON.stringify(Liked));
+    }
+  }
   render() {
     return (
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <CareerCard career={this.props.careers[1]}/>
-        <button>LIKE</button>
+        <CareerCard career={this.props.careers[this.state.currentIndex]}/>
+        <button onClick={() => this.addToLocal()}>LIKE</button>
         <button>DISLIKE</button>
       </div>
     );
