@@ -7,7 +7,25 @@ import CareerCard from '../components/career_card.jsx';
 class Career extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+
+    this.state = {
+      currentIndex: 0
+    };
+
+    this.nextCareer = this.nextCareer.bind(this);
+  }
+
+  nextCareer() {
+    const stateIndex = this.state.currentIndex;
+    if (stateIndex < this.props.careers.length - 1) {
+      this.setState({
+        currentIndex: stateIndex + 1
+      });
+    } else {
+      this.setState({
+        currentIndex: 0
+      });
+    }
   }
 
   render() {
@@ -15,9 +33,13 @@ class Career extends Component {
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <CareerCard id='swipeZone' career={this.props.careers[1]}/>
-        <button id='like'>LIKE</button>
-        <button id='dislike'>DISLIKE</button>
+        <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+        <button id='like' onClick={() => {
+          this.nextCareer();
+        }}>LIKE</button>
+        <button id='dislike' onClick={() => {
+          this.nextCareer();
+        }}>DISLIKE</button>
       </div>
     );
   }
