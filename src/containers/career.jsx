@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import NavBar from '../components/nav_bar.jsx';
-import CareerCard from '../components/career_card.jsx';
+
+import NavBar from './../components/nav_bar.jsx';
+import CareerCard from './../components/career_card.jsx';
+import CareerInfo from './../components/career_info.jsx';
+
 
 class Career extends Component {
   constructor(props) {
@@ -46,6 +49,8 @@ class Career extends Component {
         <h1>This is career page</h1>
         <NavBar />
         <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+        <button>info</button>
+        <CareerInfo career={this.props.careers[1]}/>
         <button id='like' onClick={() => {
           this.nextCareer();
           this.addToLocal();
