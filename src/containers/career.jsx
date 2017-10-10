@@ -32,13 +32,13 @@ class Career extends Component {
   }
 
   addToLocal() {
-    const CareerIndex = this.state.currentIndex;
+    const CareerTitle = this.props.careers[this.state.currentIndex].title;
     if (localStorage.liked) {
       const Liked = JSON.parse(localStorage.liked);
-      Liked.push(CareerIndex);
+      Liked.push(CareerTitle);
       localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage)
     } else {
-      const Liked = [this.state.currentIndex];
+      const Liked = [this.props.careers[this.state.currentIndex].title];
       localStorage.setItem('liked', JSON.stringify(Liked));
     }
   }
@@ -50,7 +50,7 @@ class Career extends Component {
         <NavBar />
         <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
         <button>info</button>
-        <CareerInfo career={this.props.careers[1]}/>
+        <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
         <button id='like' onClick={() => {
           this.nextCareer();
           this.addToLocal();
