@@ -11,7 +11,6 @@ let touchEnd = 0;
 
 const handleTouchStart = (event) => {
   touchStart = event.changedTouches[0].screenX;
-  console.log('start ', touchStart);
 };
 
 class Career extends Component {
@@ -27,17 +26,14 @@ class Career extends Component {
 
   handleTouchEnd(event) {
     touchEnd = event.changedTouches[0].screenX;
-    console.log('end ', touchEnd);
     this.handleSwipe(event);
   }
 
   handleSwipe() {
     if (touchEnd < touchStart - 20) {
-      console.log('swiped: left');
       this.nextCareer();
     }
     if (touchEnd > touchStart + 20) {
-      console.log('swiped: right');
       this.addToLocal();
       this.nextCareer();
     }
