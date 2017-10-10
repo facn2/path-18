@@ -1,11 +1,31 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import NavBar from './../components/nav_bar.jsx';
 
-const List = () => (
-  <div>
-    <h1>This is list page</h1>
-    <NavBar />
-  </div>
-);
+class List extends Component {
+  constructor(props) {
+    super(props);
 
-export default List;
+    this.state = {};
+  }
+
+  render() {
+    return (
+      console.log(this.state)
+      <div>
+        <NavBar />
+        <h1>Here are your liked careers</h1>
+        <div>
+          <ul>
+          </ul>
+        </div>
+      </div>
+    )
+  }
+}
+
+const mapStateToProps = state => ({
+  careers: state.careers
+});
+
+export default connect(mapStateToProps)(List);
