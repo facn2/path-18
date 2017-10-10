@@ -25,7 +25,7 @@ const handleTouchEnd = (event) => {
 };
 
 const CareerCard = ({ career }) => (
-  <div className="careerCard">
+  <div className="careerCard"
     onTouchStart={event => handleTouchStart(event)}
     onTouchEnd={event => handleTouchEnd(event)} >
     <div className="imgContainer">
