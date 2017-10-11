@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import NavBar from './nav_bar.jsx';
 
 class CareerDetail extends Component {
   constructor(props) {
@@ -12,6 +13,7 @@ class CareerDetail extends Component {
     console.log(this.props);
     return (
       <div>
+        <NavBar />
         <h1>{ this.props.selected.title }</h1>
         <h1>{ this.props.selected.image }</h1>
         <h1>{ this.props.selected.description }</h1>
