@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './../components/nav_bar.jsx';
 
-const Info = () => (
+const Help = () => (
   <div>
     <NavBar />
     <h1>How to use the app?</h1>
@@ -13,4 +13,4 @@ const Info = () => (
   </div>
 );
 
-export default Info;
+export default Help;
