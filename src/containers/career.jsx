@@ -23,6 +23,8 @@ class Career extends Component {
     };
     this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);
+    this.flipCard = this.flipCard.bind(this);
+    this.flipCardBack = this.flipCardBack.bind(this);
   }
 
   componentWillMount() {
@@ -59,10 +61,10 @@ class Career extends Component {
   }
 
   handleSwipe() {
-    if (touchEnd < touchStart - 20) {
+    if (touchEnd < touchStart - 50) {
       this.nextCareer();
     }
-    if (touchEnd > touchStart + 20) {
+    if (touchEnd > touchStart + 50) {
       this.addToLocal();
       this.nextCareer();
     }
@@ -85,6 +87,14 @@ class Career extends Component {
     }
   }
 
+  flipCard() {
+    document.querySelector('.flipper').classList.add('flip');
+  }
+
+  flipCardBack() {
+    document.querySelector('.flipper').classList.remove('flip');
+  }
+
   addToLocal() {
     const CareerTitle = this.state.careers[this.state.currentIndex].title;
     if (localStorage.liked) {
@@ -104,34 +114,41 @@ class Career extends Component {
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <div
-          onTouchStart={event => handleTouchStart(event)}
-          onTouchEnd={event => this.handleTouchEnd(event)}>
-          <CareerCard
-            id='swipeZone'
-            career={this.state.careers[this.state.currentIndex]}
-          />
+        <div className="flip-container">
+          <div id="swipeZone" className="flipper"
+            onTouchStart={event => handleTouchStart(event)}
+            onTouchEnd={event => this.handleTouchEnd(event)}>
+            <div className="front">
+              <CareerCard career={this.state.careers[this.state.currentIndex]}/>
+              <button
+                onClick={() => {
+                  this.flipCard();
+                }}> Info</button>
+            </div>
+            <div className="back">
+              <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
+              <button className="btn1" onClick={() => {
+                this.flipCardBack();
+              }}> Flip Back </button>
+            </div>
+          </div>
         </div>
-        <button>info</button>
-        <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
-        <button id='like' onClick={() => {
-          this.nextCareer();
-          this.addToLocal();
-        }}>LIKE</button>
-        <button id='dislike' onClick={() => {
-          this.nextCareer();
-        }}>DISLIKE</button>
+        <div className="btn">
+          <button id='like' onClick={() => {
+            this.nextCareer();
+            this.addToLocal();
+          }}>LIKE</button>
+          <button id='dislike' onClick={() => {
+            this.nextCareer();
+          }}>DISLIKE</button>
+        </div>
       </div>
     );
   }
 }
 
-Career.propTypes = {
-  careers: PropTypes.array
-};
+Career.propTypes = { careers: PropTypes.array };
 
-const mapStateToProps = state => ({
-  careers: state.careers
-});
+const mapStateToProps = state => ({ careers: state.careers });
 
 export default connect(mapStateToProps)(Career);
