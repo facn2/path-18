@@ -23,13 +23,12 @@ class List extends Component {
         }
       });
     });
-    const list = filtered.map((career, i) => (
+    return filtered.map((career, i) => (
       <div key={i}>
         <img src="career.image" alt="lil image goes here"/>
         <h3>{ career.title }</h3>
       </div>
     ));
-    return list;
   }
 
   render() {
