@@ -13,7 +13,7 @@ class Career extends Component {
     this.state = {
       currentIndex: 0
     };
-
+    this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);
     this.flipCard = this.flipCard.bind(this);
     this.flipCardBack = this.flipCardBack.bind(this);
@@ -39,22 +39,33 @@ class Career extends Component {
   flipCardBack() {
     document.querySelector('#flipper').classList.remove('flip');
   }
+  addToLocal() {
+    const CareerTitle = this.props.careers[this.state.currentIndex].title;
+    if (localStorage.liked) {
+      const Liked = JSON.parse(localStorage.liked);
+      Liked.push(CareerTitle);
+      localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage)
+    } else {
+      const Liked = [this.props.careers[this.state.currentIndex].title];
+      localStorage.setItem('liked', JSON.stringify(Liked));
+    }
+  }
 
   render() {
     return (
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <div className="flip-container" ontouchstart="this.classNameList.toggle('hover');">
+        <div className="flip-container" onTouchStart="this.classNameList.toggle('hover');">
           <div id="flipper" className="flipper">
-            <div className="front">
-              <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+            <div id='swipeZone' className="front">
+              <CareerCard career={this.props.careers[this.state.currentIndex]}/>
               <button onClick={() => {
                 this.flipCard();
               }}>info</button>
             </div>
             <div className="back">
-              <CareerInfo career={this.props.careers[1]}/>
+              <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
               <button className="btn1" onClick={() => {
                 this.flipCardBack();
               }}>flip Back </button>
@@ -64,6 +75,7 @@ class Career extends Component {
         <div className="btn">
           <button id='like' onClick={() => {
             this.nextCareer();
+            this.addToLocal();
           }}>LIKE</button>
           <button id='dislike' onClick={() => {
             this.nextCareer();
