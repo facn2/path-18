@@ -6,6 +6,13 @@ import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
 
+let touchStart = 0;
+let touchEnd = 0;
+
+const handleTouchStart = (event) => {
+  touchStart = event.changedTouches[0].screenX;
+};
+
 class Career extends Component {
   constructor(props) {
     super(props);
@@ -17,6 +24,21 @@ class Career extends Component {
     this.nextCareer = this.nextCareer.bind(this);
     this.flipCard = this.flipCard.bind(this);
     this.flipCardBack = this.flipCardBack.bind(this);
+  }
+
+  handleTouchEnd(event) {
+    touchEnd = event.changedTouches[0].screenX;
+    this.handleSwipe(event);
+  }
+
+  handleSwipe() {
+    if (touchEnd < touchStart - 20) {
+      this.nextCareer();
+    }
+    if (touchEnd > touchStart + 20) {
+      this.addToLocal();
+      this.nextCareer();
+    }
   }
 
   nextCareer() {
@@ -57,7 +79,9 @@ class Career extends Component {
         <h1>This is career page</h1>
         <NavBar />
         <div className="flip-container" onTouchStart="this.classNameList.toggle('hover');">
-          <div id="flipper" className="flipper">
+          <div id="flipper" className="flipper"
+            onTouchStart={event => handleTouchStart(event)}
+            onTouchEnd={event => this.handleTouchEnd(event)}>
             <div id='swipeZone' className="front">
               <CareerCard career={this.props.careers[this.state.currentIndex]}/>
               <button onClick={() => {
