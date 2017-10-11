@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import NavBar from './../components/nav_bar.jsx';
@@ -32,10 +32,10 @@ class Career extends Component {
   }
 
   handleSwipe() {
-    if (touchEnd < touchStart - 20) {
+    if (touchEnd < touchStart - 50) {
       this.nextCareer();
     }
-    if (touchEnd > touchStart + 20) {
+    if (touchEnd > touchStart + 50) {
       this.addToLocal();
       this.nextCareer();
     }
@@ -53,12 +53,13 @@ class Career extends Component {
   }
 
   flipCard() {
-    document.querySelector('#flipper').classList.add('flip');
+    document.querySelector('.flipper').classList.add('flip');
   }
 
   flipCardBack() {
-    document.querySelector('#flipper').classList.remove('flip');
+    document.querySelector('.flipper').classList.remove('flip');
   }
+
   addToLocal() {
     const CareerTitle = this.props.careers[this.state.currentIndex].title;
     if (localStorage.liked) {
@@ -76,21 +77,21 @@ class Career extends Component {
       <div>
         <h1>This is career page</h1>
         <NavBar />
-        <div className="flip-container" onTouchStart="this.classNameList.toggle('hover');">
-          <div id="flipper" className="flipper"
+        <div className="flip-container">
+          <div id="swipeZone" className="flipper"
             onTouchStart={event => handleTouchStart(event)}
             onTouchEnd={event => this.handleTouchEnd(event)}>
-            <div id='swipeZone' className="front">
+            <div className="front">
               <CareerCard career={this.props.careers[this.state.currentIndex]}/>
               <button onClick={() => {
                 this.flipCard();
-              }}>info</button>
+              }}> Info</button>
             </div>
             <div className="back">
               <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
               <button className="btn1" onClick={() => {
                 this.flipCardBack();
-              }}>flip Back </button>
+              }}> Flip Back </button>
             </div>
           </div>
         </div>
