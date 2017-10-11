@@ -24,7 +24,7 @@ class Career extends Component {
         currentIndex: stateIndex + 1
       });
     } else {
-      this.setState({currentIndex: 0});
+      this.setState({ currentIndex: 0 });
     }
   }
 
@@ -48,9 +48,7 @@ class Career extends Component {
             <h1>This is career page</h1>
             <NavBar/>
             <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
-            <button>
-              info
-            </button>
+            <button>info</button>
           </div>
           <div className="back">
             <CareerInfo career={this.props.careers[this.state.currentIndex]} />
