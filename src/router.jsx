@@ -4,7 +4,7 @@ import Welcome from './containers/welcome.jsx';
 import Career from './containers/career.jsx';
 import CareerDetails from './containers/career_details.jsx';
 import List from './containers/list.jsx';
-
+import Info from './containers/info.jsx';
 
 const Routes = () => (
   <BrowserRouter>
@@ -13,6 +13,7 @@ const Routes = () => (
       <Route path='/career' exact component={Career} />
       <Route path='/career/:title' exact component={CareerDetails} />
       <Route path='/list' exact component={List} />
+      <Route path='/info' exact component={Info} />
     </Switch>
   </BrowserRouter>
 );
