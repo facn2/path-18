@@ -25,8 +25,8 @@ class List extends Component {
     return filtered.map((career, i) => (
       <Link key={i} to={{ pathname: `career/${career.title}` }}>
         <div>
-          <img src={ career.image } alt="lil image goes here"/>
           <h3>{ career.title }</h3>
+          <img src={ career.image } alt="lil image goes here"/>
         </div>
       </Link>
     ));
