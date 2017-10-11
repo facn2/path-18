@@ -83,9 +83,10 @@ class Career extends Component {
             onTouchEnd={event => this.handleTouchEnd(event)}>
             <div className="front">
               <CareerCard career={this.props.careers[this.state.currentIndex]}/>
-              <button onClick={() => {
-                this.flipCard();
-              }}> Info</button>
+              <button
+                onClick={() => {
+                  this.flipCard();
+                }}> Info</button>
             </div>
             <div className="back">
               <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
