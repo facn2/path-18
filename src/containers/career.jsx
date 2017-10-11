@@ -56,8 +56,10 @@ class Career extends Component {
     const CareerTitle = this.props.careers[this.state.currentIndex].title;
     if (localStorage.liked) {
       const Liked = JSON.parse(localStorage.liked);
-      Liked.push(CareerTitle);
-      localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage)
+      if (!Liked.includes(CareerTitle)) {
+        Liked.push(CareerTitle);
+        localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage
+      }
     } else {
       const Liked = [this.props.careers[this.state.currentIndex].title];
       localStorage.setItem('liked', JSON.stringify(Liked));
