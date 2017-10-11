@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
-
 
 class Career extends Component {
   constructor(props) {
@@ -25,9 +24,7 @@ class Career extends Component {
         currentIndex: stateIndex + 1
       });
     } else {
-      this.setState({
-        currentIndex: 0
-      });
+      this.setState({currentIndex: 0});
     }
   }
 
@@ -45,30 +42,32 @@ class Career extends Component {
 
   render() {
     return (
-      <div>
-        <h1>This is career page</h1>
-        <NavBar />
-        <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
-        <button>info</button>
-        <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
-        <button id='like' onClick={() => {
-          this.nextCareer();
-          this.addToLocal();
-        }}>LIKE</button>
-        <button id='dislike' onClick={() => {
-          this.nextCareer();
-        }}>DISLIKE</button>
+      <div className="flip-container" ontouchstart="this.classList.toggle('hover');">
+        <div className="flipper">
+          <div className="front">
+            <h1>This is career page</h1>
+            <NavBar/>
+            <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+            <button>
+              info
+            </button>
+          </div>
+          <div className="back">
+            <CareerInfo career={this.props.careers[this.state.currentIndex]} />
+            <button id='like' onClick={() => {
+              this.nextCareer();
+              this.addToLocal();
+            }}>LIKE</button>
+            <button id='dislike' onClick= {() => { this.nextCareer(); }}>DISLIKE</button>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-Career.propTypes = {
-  careers: PropTypes.array
-};
+Career.propTypes = { careers: PropTypes.array };
 
-const mapStateToProps = state => ({
-  careers: state.careers
-});
+const mapStateToProps = state => ({ careers: state.careers });
 
 export default connect(mapStateToProps)(Career);

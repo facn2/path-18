@@ -4,7 +4,7 @@ import Welcome from './containers/welcome.jsx';
 import Career from './containers/career.jsx';
 import CareerDetails from './containers/career_details.jsx';
 import List from './containers/list.jsx';
-import Info from './containers/info.jsx';
+import Info from './components/help.jsx';
 
 const Routes = () => (
   <BrowserRouter>

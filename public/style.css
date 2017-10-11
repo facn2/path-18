@@ -1,0 +1,19 @@
+.flip-container {
+	perspective: 1000px;
+}
+
+.flip-container, .front, .back {
+	width: 320px;
+	height: 480px;
+}
+
+.flipper {
+	position: relative;
+}
+
+.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
