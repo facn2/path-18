@@ -7,14 +7,15 @@
   ],
   "rules": {
     "comma-dangle": ["error", "never"],
-    "no-unused-vars": 0
+    "no-unused-vars": 0,
+    "class-methods-use-this": 0
   },
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "globals": {
     "Style": true,
     "document": true,
     "describe": true,
-    "it":true,
-    "expect":true
+    "it": true,
+    "expect": true
   }
 }

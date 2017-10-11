@@ -15,6 +15,8 @@ class Career extends Component {
     };
 
     this.nextCareer = this.nextCareer.bind(this);
+    this.flipCard = this.flipCard.bind(this);
+    this.flipCardBack = this.flipCardBack.bind(this);
   }
 
   nextCareer() {
@@ -30,28 +32,44 @@ class Career extends Component {
     }
   }
 
+  flipCard() {
+    document.querySelector('#flipper').classList.add('flip');
+  }
+
+  flipCardBack() {
+    document.querySelector('#flipper').classList.remove('flip');
+  }
+
   render() {
     return (
-
-        <div class="flip-container" ontouchstart="this.classList.toggle('hover');">
-	<div class="flipper">
-		<div class="front">
-      <h1>This is career page</h1>
-      <NavBar />
-      <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
-      <button>info</button>
-		</div>
-		<div class="back">
-      <CareerInfo career={this.props.careers[1]}/>
-      <button id='like' onClick={() => {
-        this.nextCareer();
-      }}>LIKE</button>
-      <button id='dislike' onClick={() => {
-        this.nextCareer();
-      }}>DISLIKE</button>
-		</div>
-	</div>
-</div>
+      <div>
+        <h1>This is career page</h1>
+        <NavBar />
+        <div className="flip-container" ontouchstart="this.classNameList.toggle('hover');">
+          <div id="flipper" className="flipper">
+            <div className="front">
+              <CareerCard id='swipeZone' career={this.props.careers[this.state.currentIndex]}/>
+              <button onClick={() => {
+                this.flipCard();
+              }}>info</button>
+            </div>
+            <div className="back">
+              <CareerInfo career={this.props.careers[1]}/>
+              <button className="btn1" onClick={() => {
+                this.flipCardBack();
+              }}>flip Back </button>
+            </div>
+          </div>
+        </div>
+        <div className="btn">
+          <button id='like' onClick={() => {
+            this.nextCareer();
+          }}>LIKE</button>
+          <button id='dislike' onClick={() => {
+            this.nextCareer();
+          }}>DISLIKE</button>
+        </div>
+      </div>
     );
   }
 }
