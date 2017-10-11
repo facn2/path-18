@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
@@ -22,10 +23,12 @@ class List extends Component {
       });
     });
     return filtered.map((career, i) => (
-      <div key={i}>
-        <img src="career.image" alt="lil image goes here"/>
-        <h3>{ career.title }</h3>
-      </div>
+      <Link key={i} to={{ pathname: `career/${career.title}` }}>
+        <div>
+          <img src={ career.image } alt="lil image goes here"/>
+          <h3>{ career.title }</h3>
+        </div>
+      </Link>
     ));
   }
 
