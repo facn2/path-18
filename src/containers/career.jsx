@@ -18,10 +18,39 @@ class Career extends Component {
     super(props);
 
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      careers: []
     };
     this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);
+  }
+
+  componentWillMount() {
+    const filteredData = [];
+    if (localStorage.liked) {
+      const Liked = JSON.parse(localStorage.liked);
+      const Data = this.props.careers;
+      Data.forEach((career) => {
+        Liked.forEach((like) => {
+          if (!like === career.title) {
+            filteredData.push(career);
+          }
+        });
+      });
+      if (filteredData.length === 0) {
+        this.setState({ careers: [{
+          title: 'Game Over!',
+          image: 'go.png',
+          tagline: 'No more jobs. Check your list from the top menu'
+        }],
+        currentIndex: 0
+        });
+      } else {
+        this.setState({ careers: filteredData });
+      }
+    } else {
+      this.setState({ careers: this.props.careers });
+    }
   }
 
   handleTouchEnd(event) {
@@ -41,19 +70,23 @@ class Career extends Component {
 
   nextCareer() {
     const stateIndex = this.state.currentIndex;
-    if (stateIndex < this.props.careers.length - 1) {
+    if (stateIndex < this.state.careers.length - 1) {
       this.setState({
         currentIndex: stateIndex + 1
       });
     } else {
-      this.setState({
-        currentIndex: 0
+      this.setState({ careers: [{
+        title: 'Game Over!',
+        image: 'go.png',
+        tagline: 'No more jobs. Check your list from the top menu'
+      }],
+      currentIndex: 0
       });
     }
   }
 
   addToLocal() {
-    const CareerTitle = this.props.careers[this.state.currentIndex].title;
+    const CareerTitle = this.state.careers[this.state.currentIndex].title;
     if (localStorage.liked) {
       const Liked = JSON.parse(localStorage.liked);
       if (!Liked.includes(CareerTitle)) {
@@ -61,7 +94,7 @@ class Career extends Component {
         localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage
       }
     } else {
-      const Liked = [this.props.careers[this.state.currentIndex].title];
+      const Liked = [this.state.careers[this.state.currentIndex].title];
       localStorage.setItem('liked', JSON.stringify(Liked));
     }
   }
@@ -76,11 +109,11 @@ class Career extends Component {
           onTouchEnd={event => this.handleTouchEnd(event)}>
           <CareerCard
             id='swipeZone'
-            career={this.props.careers[this.state.currentIndex]}
+            career={this.state.careers[this.state.currentIndex]}
           />
         </div>
         <button>info</button>
-        <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
+        <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
         <button id='like' onClick={() => {
           this.nextCareer();
           this.addToLocal();
