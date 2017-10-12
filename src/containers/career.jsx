@@ -30,9 +30,9 @@ class Career extends Component {
 
   componentWillMount() {
     if (localStorage.liked) {
-      const Liked = JSON.parse(localStorage.liked);
+      const likedCareers = JSON.parse(localStorage.liked);
       const Data = this.props.careers;
-      const filteredData = _.differenceBy(Data, Liked, 'title');
+      const filteredData = _.differenceBy(Data, likedCareers, 'title');
       if (filteredData.length === 0) {
         this.setState({ careers: [{
           title: 'Game Over!',
@@ -92,14 +92,14 @@ class Career extends Component {
   addToLocal() {
     const CareerTitle = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
-      const Liked = JSON.parse(localStorage.liked);
-      if (!Liked.includes(CareerTitle)) {
-        Liked.push(CareerTitle);
-        localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage
+      const likedCareers = JSON.parse(localStorage.liked);
+      if (!likedCareers.includes(CareerTitle)) {
+        likedCareers.push(CareerTitle);
+        localStorage.setItem('liked', JSON.stringify(likedCareers)); // (key of the localstorage, data sent to the storage
       }
     } else {
-      const Liked = [this.state.careers[this.state.currentIndex]];
-      localStorage.setItem('liked', JSON.stringify(Liked));
+      const likedCareers = [this.state.careers[this.state.currentIndex]];
+      localStorage.setItem('liked', JSON.stringify(likedCareers));
     }
   }
 
