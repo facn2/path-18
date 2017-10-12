@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const CareerCard = ({ career }) => (
   <div className="career-card">
-    <img src={career.image} />
+    <img className="career-img" src={career.image} />
     <h2 className="career-title">{career.title}</h2>
     <p className="career-tagline">{career.tagline}</p>
   </div>

@@ -94,12 +94,12 @@ class Career extends Component {
             </div>
           </div>
         </div>
-        <div className="btn">
-          <button id='like' onClick={() => {
+        <div className="like-btn">
+          <button className='like' id='like' onClick={() => {
             this.nextCareer();
             this.addToLocal();
           }}>LIKE</button>
-          <button id='dislike' onClick={() => {
+          <button className='dislike' id='dislike' onClick={() => {
             this.nextCareer();
           }}>DISLIKE</button>
         </div>
