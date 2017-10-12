@@ -5,11 +5,11 @@
   "main": "index.jsx",
   "engines" : { "node" : ">=8.4" },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "bundle": "webpack --config webpack.config.js",
     "bundle:watch": "webpack --config webpack.config.js --watch",
     "dev:start": "nodemon ./src/start_server",
     "start": "node ./src/start_server.js",
-    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run bundle"
   },
   "author": "path-18",
   "license": "ISC",
