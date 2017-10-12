@@ -21,10 +21,16 @@ class List extends Component {
         }
       });
     });
+
     return filtered.map((career, i) => (
       <div key={i}>
-        <img src="career.image" alt="lil image goes here"/>
         <h3>{ career.title }</h3>
+        <img src="career.image" alt="lil image goes here"/>
+        <button onClick={(i) => {
+          likedCareers.splice(i, 1);
+          localStorage.setItem('liked', JSON.stringify(likedCareers));
+          this.setState({ });
+        }}>Delete</button>
       </div>
     ));
   }
