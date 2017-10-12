@@ -92,8 +92,8 @@ Take a look at the prototype on [figma](https://www.figma.com/file/Mm2muc8uV1Km4
 * Close issue *after* the PR has been merged and all tasks relating to the issue are complete.
 
 ### Stretch Goals:
-* Ability to delete a job from the list of matched jobs.
-* User authentication.
-* Use of logic for browsing job options.
-* Expand data to include colleges.
-* Expand data to include more jobs.
+- [ ] Ability to delete a job from the list of matched jobs.
+- [ ] User authentication.
+- [ ] Use of logic for browsing job options.
+- [ ] Expand data to include colleges.
+- [ ] Expand data to include more jobs.
