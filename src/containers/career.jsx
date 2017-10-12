@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -28,17 +29,10 @@ class Career extends Component {
   }
 
   componentWillMount() {
-    const filteredData = [];
     if (localStorage.liked) {
       const Liked = JSON.parse(localStorage.liked);
       const Data = this.props.careers;
-      Data.forEach((career) => {
-        Liked.forEach((like) => {
-          if (!like === career.title) {
-            filteredData.push(career);
-          }
-        });
-      });
+      const filteredData = _.differenceBy(Data, Liked, 'title');
       if (filteredData.length === 0) {
         this.setState({ careers: [{
           title: 'Game Over!',
@@ -96,7 +90,7 @@ class Career extends Component {
   }
 
   addToLocal() {
-    const CareerTitle = this.state.careers[this.state.currentIndex].title;
+    const CareerTitle = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
       const Liked = JSON.parse(localStorage.liked);
       if (!Liked.includes(CareerTitle)) {
@@ -104,7 +98,7 @@ class Career extends Component {
         localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage
       }
     } else {
-      const Liked = [this.state.careers[this.state.currentIndex].title];
+      const Liked = [this.state.careers[this.state.currentIndex]];
       localStorage.setItem('liked', JSON.stringify(Liked));
     }
   }
