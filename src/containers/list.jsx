@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
@@ -24,8 +25,10 @@ class List extends Component {
 
     return filtered.map((career, i) => (
       <div key={i}>
-        <h3>{ career.title }</h3>
-        <img src="career.image" alt="lil image goes here"/>
+        <Link to={{ pathname: `career/${career.title}` }}>
+          <h3>{ career.title }</h3>
+          <img src="career.image" alt="lil image goes here"/>
+        </Link>
         <button onClick={(i) => {
           likedCareers.splice(i, 1);
           localStorage.setItem('liked', JSON.stringify(likedCareers));
