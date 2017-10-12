@@ -31,9 +31,9 @@ class Career extends Component {
   componentWillMount() {
     if (localStorage.liked) {
       const likedCareers = JSON.parse(localStorage.liked);
-      const Data = this.props.careers;
-      const filteredData = _.differenceBy(Data, likedCareers, 'title');
-      if (filteredData.length === 0) {
+      const allCareers = this.props.careers;
+      const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
+      if (notLikedCareers.length === 0) {
         this.setState({ careers: [{
           title: 'Game Over!',
           image: 'go.png',
@@ -42,7 +42,7 @@ class Career extends Component {
         currentIndex: 0
         });
       } else {
-        this.setState({ careers: filteredData });
+        this.setState({ careers: notLikedCareers });
       }
     } else {
       this.setState({ careers: this.props.careers });
