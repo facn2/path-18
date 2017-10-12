@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBar from '../components/nav_bar.jsx';
@@ -17,12 +18,34 @@ class Career extends Component {
     super(props);
 
     this.state = {
-      currentIndex: 0
+      currentIndex: 0,
+      careers: []
     };
     this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);
     this.flipCard = this.flipCard.bind(this);
     this.flipCardBack = this.flipCardBack.bind(this);
+  }
+
+  componentWillMount() {
+    if (localStorage.liked) {
+      const likedCareers = JSON.parse(localStorage.liked);
+      const allCareers = this.props.careers;
+      const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
+      if (notLikedCareers.length === 0) {
+        this.setState({ careers: [{
+          title: 'Game Over!',
+          image: 'go.png',
+          tagline: 'No more jobs. Check your list from the top menu'
+        }],
+        currentIndex: 0
+        });
+      } else {
+        this.setState({ careers: notLikedCareers });
+      }
+    } else {
+      this.setState({ careers: this.props.careers });
+    }
   }
 
   handleTouchEnd(event) {
@@ -42,12 +65,18 @@ class Career extends Component {
 
   nextCareer() {
     const stateIndex = this.state.currentIndex;
-    if (stateIndex < this.props.careers.length - 1) {
+    if (stateIndex < this.state.careers.length - 1) {
       this.setState({
         currentIndex: stateIndex + 1
       });
     } else {
-      this.setState({ currentIndex: 0 });
+      this.setState({ careers: [{
+        title: 'Game Over!',
+        image: 'go.png',
+        tagline: 'No more jobs. Check your list from the top menu'
+      }],
+      currentIndex: 0
+      });
     }
   }
 
@@ -60,14 +89,16 @@ class Career extends Component {
   }
 
   addToLocal() {
-    const CareerTitle = this.props.careers[this.state.currentIndex].title;
+    const career = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
-      const Liked = JSON.parse(localStorage.liked);
-      Liked.push(CareerTitle);
-      localStorage.setItem('liked', JSON.stringify(Liked)); // (key of the localstorage, data sent to the storage)
+      const likedCareers = JSON.parse(localStorage.liked);
+      if (!likedCareers.includes(career)) {
+        likedCareers.push(career);
+        localStorage.setItem('liked', JSON.stringify(likedCareers)); // (key of the localstorage, data sent to the storage
+      }
     } else {
-      const Liked = [this.props.careers[this.state.currentIndex].title];
-      localStorage.setItem('liked', JSON.stringify(Liked));
+      const likedCareers = [this.state.careers[this.state.currentIndex]];
+      localStorage.setItem('liked', JSON.stringify(likedCareers));
     }
   }
 
@@ -80,14 +111,14 @@ class Career extends Component {
             onTouchStart={event => handleTouchStart(event)}
             onTouchEnd={event => this.handleTouchEnd(event)}>
             <div className="front">
-              <CareerCard career={this.props.careers[this.state.currentIndex]}/>
+              <CareerCard career={this.state.careers[this.state.currentIndex]}/>
               <button
                 onClick={() => {
                   this.flipCard();
                 }}> Info</button>
             </div>
             <div className="back">
-              <CareerInfo career={this.props.careers[this.state.currentIndex]}/>
+              <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
               <button className="btn1" onClick={() => {
                 this.flipCardBack();
               }}> Flip Back </button>

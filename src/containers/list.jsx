@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
@@ -16,15 +17,23 @@ class List extends Component {
     const likedCareers = JSON.parse(localStorage.liked);
     listItems.forEach((career) => {
       likedCareers.forEach((liked) => {
-        if (liked === career.title) {
+        if (liked.title === career.title) {
           filtered.push(career);
         }
       });
     });
+
     return filtered.map((career, i) => (
       <div key={i}>
-        <img src="career.image" alt="lil image goes here"/>
-        <h3>{ career.title }</h3>
+        <Link to={{ pathname: `career/${career.title}` }}>
+          <h3>{ career.title }</h3>
+          <img src="career.image" alt="lil image goes here"/>
+        </Link>
+        <button onClick={(i) => {
+          likedCareers.splice(i, 1);
+          localStorage.setItem('liked', JSON.stringify(likedCareers));
+          this.setState({ });
+        }}>Delete</button>
       </div>
     ));
   }

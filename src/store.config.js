@@ -1,5 +1,6 @@
 import { createStore } from 'redux';
 import reducers from './reducers/index';
+import careerImg from './../public/images/imageedit_1_3201666448.gif';
 
 const storeConfigure = () => {
   const initialStore = {
@@ -7,7 +8,7 @@ const storeConfigure = () => {
       { title: 'Doctor',
         tagline: 'Promots and Improves Health',
         description: 'A doctor is a professional who practises medicine, which is concerned with promoting, maintaining, or restoring health.',
-        image: 'doctor.svg',
+        image: careerImg,
         degree: 'Medicine',
         grade_bagrut: '11.10',
         grade_psychometric: '760',
@@ -18,7 +19,7 @@ const storeConfigure = () => {
       { title: 'Psychologist',
         tagline: 'Treats Mental Health Issues',
         description: 'A psychologist is a mental health professional who evaluates and studies behavior and mental processes.',
-        image: 'psychologist.svg',
+        image: careerImg,
         degree: 'Psychology',
         grade_bagrut: '11.25',
         grade_psychometric: '740',
@@ -29,7 +30,7 @@ const storeConfigure = () => {
       { title: 'Programmer',
         tagline: 'Creates Computer Software',
         description: 'A programmer, computer programmer, developer, or software engineer is a person who creates computer software.',
-        image: 'programmer.svg',
+        image: careerImg,
         degree: 'Computer Science',
         grade_bagrut: '11.25',
         grade_psychometric: '740',
@@ -40,7 +41,7 @@ const storeConfigure = () => {
       { title: 'Lawyer',
         tagline: 'Practices Law',
         description: 'A lawyer practices law, as an advocate. Working as a lawyer involves the practical application of abstract legal theories and knowledge to solve specific individualized problems.',
-        image: 'lawyer.svg',
+        image: careerImg,
         degree: 'Law',
         grade_bagrut: '10.00',
         grade_psychometric: '725',
@@ -51,7 +52,7 @@ const storeConfigure = () => {
       { title: 'Teacher',
         tagline: 'Helps Others to Acquire Knowledge',
         description: 'A teacher or an educator helps others to acquire knowledge, competences or values.',
-        image: 'teacher.svg',
+        image: careerImg,
         degree: 'Education',
         grade_bagrut: '10.00',
         grade_psychometric: '650',
