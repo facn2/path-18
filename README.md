@@ -2,7 +2,7 @@
 
 ![Path18 logo](./public/images/logo.png)
 
-**Web app for informing young people of a variety of careers and paths** :mortar_board:
+**[Web app](https://path-18.herokuapp.com/) for informing young people of a variety of careers and paths** :mortar_board:
 
 ### Local Install
 
@@ -14,13 +14,19 @@ Install npm modules.
 ```
 npm install
 ```
-View on localhost.
+Development:
+```
+npm run bundle:watch
+```
+```
+npm run dev:start
+```
+Production:
+```
+npm run bundle
+```
 ```
 npm start
-```
-Run tests.
-```
-npm test
 ```
 
 ### Problem Statement:
