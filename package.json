@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.jsx",
+  "engines" : { "node" : ">=8.4" },
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "bundle:watch": "webpack --config webpack.config.js --watch",
     "dev:start": "nodemon ./src/start_server",
     "start": "node ./src/start_server.js",
-    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "npm install --only=dev && npm install && npm run build"
   },
   "author": "path-18",
   "license": "ISC",
