@@ -16,7 +16,7 @@ class List extends Component {
     const likedCareers = JSON.parse(localStorage.liked);
     listItems.forEach((career) => {
       likedCareers.forEach((liked) => {
-        if (liked === career.title) {
+        if (liked.title === career.title) {
           filtered.push(career);
         }
       });
