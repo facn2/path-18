@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import NavBar from './../components/nav_bar.jsx';
+import garbageImg from '../../public/images/garbage.png';
+
 
 class List extends Component {
   constructor(props) {
@@ -29,11 +32,11 @@ class List extends Component {
           <h3>{ career.title }</h3>
           <img src="career.image" alt="lil image goes here"/>
         </Link>
-        <button onClick={(i) => {
+        <img src={garbageImg} alt="delete" onClick={(i) => {
           likedCareers.splice(i, 1);
           localStorage.setItem('liked', JSON.stringify(likedCareers));
           this.setState({ });
-        }}>Delete</button>
+        }}/>
       </div>
     ));
   }
