@@ -17,18 +17,24 @@ class List extends Component {
     const likedCareers = JSON.parse(localStorage.liked);
     listItems.forEach((career) => {
       likedCareers.forEach((liked) => {
-        if (liked === career.title) {
+        if (liked.title === career.title) {
           filtered.push(career);
         }
       });
     });
+
     return filtered.map((career, i) => (
-      <Link key={i} to={{ pathname: `career/${career.title}` }}>
-        <div>
+      <div key={i}>
+        <Link to={{ pathname: `career/${career.title}` }}>
           <h3>{ career.title }</h3>
-          <img src={ career.image } alt="lil image goes here"/>
-        </div>
-      </Link>
+          <img src="career.image" alt="lil image goes here"/>
+        </Link>
+        <button onClick={(i) => {
+          likedCareers.splice(i, 1);
+          localStorage.setItem('liked', JSON.stringify(likedCareers));
+          this.setState({ });
+        }}>Delete</button>
+      </div>
     ));
   }
 
