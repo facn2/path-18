@@ -10,9 +10,7 @@ class Details extends Component {
     this.state = {};
   }
 
-
   componentWillMount() {
-    // console.log(this.props);
     const FilteredCareer = this.props.careers.filter((career) => {
       return career.title === this.props.match.params.title;
     });
