@@ -23,6 +23,9 @@ npm run dev:start
 ```
 Production:
 ```
+npm run bundle
+```
+```
 npm start
 ```
 
