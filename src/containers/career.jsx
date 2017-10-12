@@ -90,11 +90,11 @@ class Career extends Component {
   }
 
   addToLocal() {
-    const CareerTitle = this.state.careers[this.state.currentIndex];
+    const career = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
       const likedCareers = JSON.parse(localStorage.liked);
-      if (!likedCareers.includes(CareerTitle)) {
-        likedCareers.push(CareerTitle);
+      if (!likedCareers.includes(career)) {
+        likedCareers.push(career);
         localStorage.setItem('liked', JSON.stringify(likedCareers)); // (key of the localstorage, data sent to the storage
       }
     } else {
