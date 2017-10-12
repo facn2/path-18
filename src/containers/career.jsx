@@ -56,7 +56,9 @@ class Career extends Component {
     this.handleSwipe(event);
   }
 
-  handleSwipe() {
+  handleSwipe() {          <button id='dislike' onClick={() => {
+            this.nextCareer();
+          }}>DISLIKE</button>
     if (touchEnd < touchStart - 50) {
       this.nextCareer();
     }
