@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Info from 'react-icons/lib/fa/info-circle';
+import Back from 'react-icons/lib/fa/arrow-left';
 
 import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
@@ -114,16 +116,16 @@ class Career extends Component {
             onTouchEnd={event => this.handleTouchEnd(event)}>
             <div className="front">
               <CareerCard career={this.state.careers[this.state.currentIndex]}/>
-              <button
+              <Info size='2em'
                 onClick={() => {
                   this.flipCard();
-                }}> Info</button>
+                }}/>
             </div>
             <div className="back">
               <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
-              <button className="btn1" onClick={() => {
+              <Back size='2em'className="btn1" onClick={() => {
                 this.flipCardBack();
-              }}> Flip Back </button>
+              }} />
             </div>
           </div>
         </div>
