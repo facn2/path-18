@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
+import likeImg from '../../public/images/like.png';
+import dislikeImg from '../../public/images/dislike.png';
 
 let touchStart = 0;
 let touchEnd = 0;
@@ -128,13 +130,13 @@ class Career extends Component {
           </div>
         </div>
         <div className="btn">
-          <button id='like' onClick={() => {
+          <img src={dislikeImg} alt="dislike" onClick={() => {
+            this.nextCareer();
+          }}/>
+          <img src={likeImg} alt="like" onClick={() => {
             this.nextCareer();
             this.addToLocal();
-          }}>LIKE</button>
-          <button id='dislike' onClick={() => {
-            this.nextCareer();
-          }}>DISLIKE</button>
+          }}/>
         </div>
       </div>
     );
