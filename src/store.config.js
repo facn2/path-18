@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
 import reducers from './reducers/index';
-import doctor from './../public/images/doctor.png';
-import lawyer from './../public/images/lawyer.png';
-import programmer from './../public/images/programmer.png';
-import teacher from './../public/images/teacher.png';
-import psychologist from './../public/images/psychologist.jpg';
+import doctorImg from './../public/images/doctor.png';
+import lawyerImg from './../public/images/lawyer.png';
+import programmerImg from './../public/images/programmer.png';
+import teacherImg from './../public/images/teacher.png';
+import psychologistImg from './../public/images/psychologist.jpg';
 
 const storeConfigure = () => {
   const initialStore = {
@@ -12,7 +12,7 @@ const storeConfigure = () => {
       { title: 'Doctor',
         tagline: 'Promots and Improves Health',
         description: 'A doctor is a professional who practises medicine, which is concerned with promoting, maintaining, or restoring health.',
-        image: 'doctor.png',
+        image: doctorImg,
         degree: 'Medicine',
         grade_bagrut: '11.10',
         grade_psychometric: '760',
@@ -23,7 +23,7 @@ const storeConfigure = () => {
       { title: 'Psychologist',
         tagline: 'Treats Mental Health Issues',
         description: 'A psychologist is a mental health professional who evaluates and studies behavior and mental processes.',
-        image: 'psychologist.jpg',
+        image: psychologistImg,
         degree: 'Psychology',
         grade_bagrut: '11.25',
         grade_psychometric: '740',
@@ -34,7 +34,7 @@ const storeConfigure = () => {
       { title: 'Programmer',
         tagline: 'Creates Computer Software',
         description: 'A programmer, computer programmer, developer, or software engineer is a person who creates computer software.',
-        image: 'programmer.png',
+        image: programmerImg,
         degree: 'Computer Science',
         grade_bagrut: '11.25',
         grade_psychometric: '740',
@@ -45,7 +45,7 @@ const storeConfigure = () => {
       { title: 'Lawyer',
         tagline: 'Practices Law',
         description: 'A lawyer practices law, as an advocate. Working as a lawyer involves the practical application of abstract legal theories and knowledge to solve specific individualized problems.',
-        image: 'lawyer.png',
+        image: lawyerImg,
         degree: 'Law',
         grade_bagrut: '10.00',
         grade_psychometric: '725',
@@ -56,7 +56,7 @@ const storeConfigure = () => {
       { title: 'Teacher',
         tagline: 'Helps Others to Acquire Knowledge',
         description: 'A teacher or an educator helps others to acquire knowledge, competences or values.',
-        image: 'teacher.png',
+        image: teacherImg,
         degree: 'Education',
         grade_bagrut: '10.00',
         grade_psychometric: '650',
