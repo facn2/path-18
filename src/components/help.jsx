@@ -10,7 +10,6 @@ const Help = () => (
     <p>You can also click on the LIKE and DISLIKE buttons</p>
     <p>Click LIST to see the jobs that you like</p>
     <p>Click HOME to go back to jobs</p>
-
   </div>
 );
 
