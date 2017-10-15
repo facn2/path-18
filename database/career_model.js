@@ -8,8 +8,8 @@ const careerSchema = new Schema({
   description: String,
   image: String,
   degree: String,
-  grade_bagrut: Number,
-  grade_psychometric: Number,
+  grade_bagrut: String,
+  grade_psychometric: String,
   universities: String,
   salary_start: String,
   salary_ten_year: String
