@@ -9,26 +9,26 @@ class CareerDetail extends Component {
 
     this.state = {};
   }
-  render() {
+  render({ selected }) {
     return (
       <div>
         <NavBar />
-        <h1>{ this.props.selected.title }</h1>
-        <img src = { this.props.selected.image } />
-        <p>{ this.props.selected.description }</p>
+        <h1>{ selected.title }</h1>
+        <img src = { selected.image } />
+        <p>{ selected.description }</p>
         <h2>Grades you need: </h2>
-        <p>Bagrut: { this.props.selected.grade_bagrut }</p>
-        <p>Psychometric: { this.props.selected.grade_psychometric }</p>
+        <p>Bagrut: { selected.grade_bagrut }</p>
+        <p>Psychometric: { selected.grade_psychometric }</p>
         <h2>Universities offering this degree: </h2>
-        <p>{ this.props.selected.universities }</p>
+        <p>{ selected.universities }</p>
         <h2>Salary: </h2>
-        <p>starting salary: { this.props.selected.salary_start }</p>
-        <p>senior salary: { this.props.selected.salary_ten_year }</p>
+        <p>starting salary: { selected.salary_start }</p>
+        <p>senior salary: { selected.salary_ten_year }</p>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ careers: state.careers })
+const mapStateToProps = state => ({ careers: state.careers });
 
 export default connect(mapStateToProps)(CareerDetail);
