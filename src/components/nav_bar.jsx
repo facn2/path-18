@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import List from 'react-icons/lib/fa/list-ul';
 import Help from 'react-icons/lib/fa/question-circle';
 
-const logo = require('../../public/images/logo.png');
+const logo = require('../../public/images/logo_small.png');
 
 const NavBar = () => (
   <div>
