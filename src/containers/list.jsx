@@ -32,11 +32,12 @@ class List extends Component {
           <h3>{ career.title }</h3>
           <img src="career.image" alt="lil image goes here"/>
         </Link>
-        <img src={garbageImg} alt="delete" onClick={(i) => {
-          likedCareers.splice(i, 1);
-          localStorage.setItem('liked', JSON.stringify(likedCareers));
-          this.setState({ });
-        }}/>
+        <img src={garbageImg} alt="delete"
+          onClick={(i) => {
+            likedCareers.splice(i, 1);
+            localStorage.setItem('liked', JSON.stringify(likedCareers));
+            this.setState({ });
+          }}/>
       </div>
     ));
   }
