@@ -11,8 +11,8 @@ const careerSchema = new Schema({
   grade_bagrut: Number,
   grade_psychometric: Number,
   universities: String,
-  salary_start: Number,
-  salary_ten_year: Number
+  salary_start: String,
+  salary_ten_year: String
 });
 
 const Career = mongoose.model('Career', careerSchema);
