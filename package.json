@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.jsx",
-  "engines" : { "node" : ">=8.4" },
+  "engines": {
+    "node": ">=8.4"
+  },
   "scripts": {
     "bundle": "webpack --config webpack.config.js",
     "bundle:watch": "webpack --config webpack.config.js --watch",
@@ -36,6 +38,7 @@
     "express": "^4.16.1",
     "file-loader": "^1.1.5",
     "lodash": "^4.17.4",
+    "mongoose": "^4.12.2",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
