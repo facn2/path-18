@@ -93,6 +93,13 @@ class Career extends Component {
     document.querySelector('.flipper').classList.remove('flip');
   }
 
+  checkFlip() {
+    const flippedCard = document.querySelector('.flipper');
+    if (flippedCard.classList.contains('flip')) {
+      document.querySelector('.flipper').classList.remove('flip');
+    }
+  }
+
   addToLocal() {
     const career = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
@@ -128,13 +135,15 @@ class Career extends Component {
         </div>
         <div className="btn">
           <img src={dislikeImg} alt="dislike"
-            onClick={() =>
-              this.nextCareer()
-            }/>
+            onClick={() => {
+              this.nextCareer();
+              this.checkFlip();
+            }}/>
           <img src={likeImg} alt="like"
             onClick={() => {
               this.nextCareer();
               this.addToLocal();
+              this.checkFlip();
             }}/>
         </div>
       </div>
