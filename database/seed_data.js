@@ -60,3 +60,5 @@ const careers = [
     salary_ten_year: '13,000'
   })
 ];
+
+module.exports = careers;
