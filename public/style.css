@@ -1,60 +1,129 @@
+/* Use box-sizing border-box instead of ContentBox*/
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Place for Default Styles */
+
+body {
+	font-family: Arial;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* I split the screen into 100vh. Navbar 10vh + card 65vh (4vh margin (top and bottom )) + buttonContainer 17vh.
+	So 10 + 65 + 8 + 17 = 100vh
+*/
+
+/* Styling of navBar */
+.nav-bar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 10vh;
+	background: #66829E;
+	box-shadow: 0 0.125em 0.250em rgba(0,0,0,0.28);
+}
+
+.nav-element {
+	flex:  1 1 0;
+	text-align:	center;
+}
+
+/* Styling of Career Card */
+.career-card {
+	height:	70vh;
+  width: 100%;
+  display: block;
+	margin:	0 auto;
+	background:	whitesmoke;
+	box-shadow: 0 0.2em 0.2em rgba(0,0,0,0.25);
+  position: absolute;
+  top: 5vh;
+  left: 1.5em;
+}
+
+.career-img {
+	width: 15em;
+	height:	15em;
+	border-radius: 50%;
+  display: block;
+  margin: 2em auto;
+}
+
+.career-title {
+	font-size: 2em;
+	text-align: center;
+}
+
+.career-tagline {
+	font-size: 1.5em;
+	width: 100%;
+	text-align: center;
+}
+
+.like-btn {
+  margin-top: 5em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.like, .dislike {
+  width: 8em;
+  background-color: #505160;
+}
+
 /* entire container, keeps perspective */
 .flip-container {
-	perspective:62.5em;
+	perspective: 62.5em;
 }
-/* flip the pane when hovered */
-/*.flip-container:hover .flipper, .flip-container.hover .flipper {
-}*/
 
 .flip {
-
 	transform:rotateY(180deg);
 }
 
 .flip-container, .front, .back {
-	width:20em;
-	height:30em;
+	width: 20em;
+	height: 30em;
 }
 
 /* flip speed goes here */
 .flipper {
-	transition:0.6s;
-	transform-style:preserve-3d;
-	position:relative;
+	transition: 0.6s;
+	transform-style: preserve-3d;
+	position: relative;
 }
 
 /* hide back of pane during swap */
 .front {
-  backface-visibility:hidden;
-	position:absolute;
-	top:0;
-	left:0;
-}
-.back {
-	backface-visibility:hidden;
-	position:absolute;
-	top:0;
-	left:0;
+  backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
 }
 
-/* front pane, placed above back */
-.front {
-	z-index:2;
-	/* for firefox 31 */
-	transform:rotateY(0deg);
+.back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+  transform: rotateY(180deg);
 }
 
-/* back, initially hidden pane */
-.back {
-	transform:rotateY(180deg);
-}
 .btn{
-position:absolute;
-bottom:30%;
-backface-visibility: hidden;
-
+  position: absolute;
+  bottom: 30%;
+  backface-visibility: hidden;
 }
+
 .btn1 {
-	position:absolute;
-	bottom:70%;
+	position: absolute;
+	bottom: 70%;
 }

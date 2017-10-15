@@ -59,7 +59,6 @@ const storeConfigure = () => {
         universities: 'Hebrew University, Haifa University, Tel-Aviv University, Bar-Ilan University, Ben-Guriun University',
         salary_start: '6,000',
         salary_ten_year: '13,000'
-
       }
     ]
   };

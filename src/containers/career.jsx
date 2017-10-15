@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import NavBar from './../components/nav_bar.jsx';
+import NavBar from '../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
 
@@ -106,7 +105,6 @@ class Career extends Component {
   render() {
     return (
       <div>
-        <h1>This is career page</h1>
         <NavBar />
         <div className="flip-container">
           <div id="swipeZone" className="flipper"
@@ -127,12 +125,12 @@ class Career extends Component {
             </div>
           </div>
         </div>
-        <div className="btn">
-          <button id='like' onClick={() => {
+        <div className="like-btn">
+          <button className='like' id='like' onClick={() => {
             this.nextCareer();
             this.addToLocal();
           }}>LIKE</button>
-          <button id='dislike' onClick={() => {
+          <button className='dislike' id='dislike' onClick={() => {
             this.nextCareer();
           }}>DISLIKE</button>
         </div>
