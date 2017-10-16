@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import _ from 'lodash';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Info from 'react-icons/lib/fa/info-circle';
+import Back from 'react-icons/lib/fa/arrow-left';
 
 import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
-import fetchCareers from '../actions/index';
+import likeImg from '../../public/images/like.png';
+import dislikeImg from '../../public/images/dislike.png';
 
 let touchStart = 0;
 let touchEnd = 0;
@@ -95,6 +98,13 @@ class Career extends Component {
     document.querySelector('.flipper').classList.remove('flip');
   }
 
+  checkFlip() {
+    const flippedCard = document.querySelector('.flipper');
+    if (flippedCard.classList.contains('flip')) {
+      document.querySelector('.flipper').classList.remove('flip');
+    }
+  }
+
   addToLocal() {
     const career = this.state.careers[this.state.currentIndex];
     if (localStorage.liked) {
@@ -120,27 +130,26 @@ class Career extends Component {
             onTouchEnd={event => this.handleTouchEnd(event)}>
             <div className="front">
               <CareerCard career={this.state.careers[this.state.currentIndex]}/>
-              <button
-                onClick={() => {
-                  this.flipCard();
-                }}> Info</button>
+              <Info size='2em' onClick={() => this.flipCard() } />
             </div>
             <div className="back">
               <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
-              <button className="btn1" onClick={() => {
-                this.flipCardBack();
-              }}> Flip Back </button>
+              <Back size='2em'className="btn1" onClick={() => this.flipCardBack() }/>
             </div>
           </div>
         </div>
         <div className="btn">
-          <button id='like' onClick={() => {
-            this.nextCareer();
-            this.addToLocal();
-          }}>LIKE</button>
-          <button id='dislike' onClick={() => {
-            this.nextCareer();
-          }}>DISLIKE</button>
+          <img src={dislikeImg} alt="dislike"
+            onClick={() => {
+              this.nextCareer();
+              this.checkFlip();
+            }}/>
+          <img src={likeImg} alt="like"
+            onClick={() => {
+              this.nextCareer();
+              this.addToLocal();
+              this.checkFlip();
+            }}/>
         </div>
       </div>
     );

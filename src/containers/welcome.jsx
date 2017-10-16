@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import fetchCareers from '../actions/index';
+import logoImg from '../../public/images/logo.png';
 
 class Welcome extends Component {
   componentWillMount() {
@@ -12,7 +13,7 @@ class Welcome extends Component {
   render() {
     return (
       <div>
-        <h1>Path18</h1>
+        <img src={logoImg} alt="Path 18 Logo"/>
         <p> Welcome to our app.
           We aim to show you lots of jobs to help you decide on a suitable career path.
           We also give you lots of info on the degrees and grades you need. Hope you enjoy it!</p>
