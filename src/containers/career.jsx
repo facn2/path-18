@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
 import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
+import fetchCareers from '../actions/index';
 
 let touchStart = 0;
 let touchEnd = 0;
@@ -20,7 +21,12 @@ class Career extends Component {
 
     this.state = {
       currentIndex: 0,
-      careers: []
+      careers: [
+        {
+          title: '',
+          image: ''
+        }
+      ]
     };
     this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);

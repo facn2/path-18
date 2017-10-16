@@ -5,6 +5,7 @@ import Routes from './router.jsx';
 import Career from './containers/career.jsx';
 import Style from '../public/style.css';
 import storeConfigure from './store.config';
+import fetchCareers from './actions/index';
 
 const store = storeConfigure();
 
