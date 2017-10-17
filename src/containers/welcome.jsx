@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import fetchCareers from '../actions/index';
+import fetchCareers from '../actions/fetch_careers';
 import logoImg from '../../public/images/logo.png';
 
 class Welcome extends Component {

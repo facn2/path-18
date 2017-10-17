@@ -4,10 +4,9 @@ import { Provider } from 'react-redux';
 import Routes from './router.jsx';
 import Career from './containers/career.jsx';
 import Style from '../public/style.css';
-import storeConfigure from './store.config';
-import fetchCareers from './actions/index';
+import store from './store.config';
 
-const store = storeConfigure();
+// const store = storeConfigure();
 
 ReactDOM.render(
   <Provider store={ store }>

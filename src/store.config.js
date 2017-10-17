@@ -1,14 +1,41 @@
+import * as asyncInitialState from 'redux-async-initial-state';
+import axios from 'axios';
+import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import { autoRehydrate, persistStore } from 'redux-persist';
 import reducers from './reducers/index';
-import careerImg from './../public/images/imageedit_1_3201666448.gif';
+//
+// configureStore() {
+//   createStore(
+//     reducers, applyMiddleware(thunk)
+//   );
+// }
 
-const options = {
-  endpoint: 'http://localhost:9876/api/careers'
-};
+const store = createStore(
+  reducers, undefined, compose(
+    applyMiddleware(thunk, logger),
+    autoRehydrate()
+  )
+);
 
-export default function configureStore() {
-  return createStore(
-    reducers, applyMiddleware(thunk)
-  );
-}
+persistStore(store);
+
+// const reducer = asyncInitialState.outerReducer(reducers({
+//   ...reducers, asyncInitialState: asyncInitialState.innerReducer
+// }));
+//
+// const loadStore = () => new Promise((resolve) => {
+//   axios.get('/api/careers')
+//     .then(resolve);
+// });
+//
+//
+// const store = createStore(
+//   reducer,
+//   compose(applyMiddleware(asyncInitialState.middleware(loadStore)))
+// );
+//
+// export default store;
+
+export default store;

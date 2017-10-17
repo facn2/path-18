@@ -26,8 +26,15 @@ class Career extends Component {
       currentIndex: 0,
       careers: [
         {
-          title: '',
-          image: ''
+          title: ' ',
+          image: ' ',
+          description: ' ',
+          degree: ' ',
+          grade_bagrut: ' ',
+          grade_psychometric: ' ',
+          universities: ' ',
+          salary_start: ' ',
+          salary_ten_year: ' '
         }
       ]
     };
@@ -35,6 +42,38 @@ class Career extends Component {
     this.nextCareer = this.nextCareer.bind(this);
     this.flipCard = this.flipCard.bind(this);
     this.flipCardBack = this.flipCardBack.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.careers.length !== 0) {
+      console.log('Did mount');
+      this.setState({ careers: this.props.careers });
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('next props careers: ', nextProps);
+    if (nextProps.careers !== this.props.careers) {
+      if (localStorage.liked) {
+        const likedCareers = JSON.parse(localStorage.liked);
+        const allCareers = nextProps.careers;
+        const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
+        console.log('Not liked careers: ', notLikedCareers);
+        if (notLikedCareers.length === 0) {
+          this.setState({ careers: [{
+            title: 'Game Over!',
+            image: 'go.png',
+            tagline: 'No more jobs. Check your list from the top menu'
+          }],
+          currentIndex: 0
+          });
+        } else {
+          this.setState({ careers: notLikedCareers });
+        }
+      } else {
+        this.setState({ careers: nextProps.careers });
+      }
+    }
   }
 
   componentWillMount() {
@@ -53,7 +92,8 @@ class Career extends Component {
       } else {
         this.setState({ careers: notLikedCareers });
       }
-    } else {
+    } if (this.props.careers.length !== 0) {
+      console.log('Will mount');
       this.setState({ careers: this.props.careers });
     }
   }
@@ -120,6 +160,9 @@ class Career extends Component {
   }
 
   render() {
+    console.log('Career.jsx this.props: ', this.props.careers);
+    console.log('Pass this to careercard: ', this.state.careers[this.state.currentIndex]);
+    console.log('State: ', this.state);
     return (
       <div>
         <h1>This is career page</h1>
