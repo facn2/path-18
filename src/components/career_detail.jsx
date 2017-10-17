@@ -1,33 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import NavBar from './nav_bar.jsx';
 
 class CareerDetail extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {};
-  }
-  render({ selected }) {
+  render() {
+    const selected = this.props.selected;
     return (
       <div>
         <NavBar />
-        <h1>{ selected.title }</h1>
-        <img src = { selected.image } />
-        <p>{ selected.description }</p>
-        <h2>Grades you need: </h2>
-        <p>Bagrut: { selected.grade_bagrut }</p>
-        <p>Psychometric: { selected.grade_psychometric }</p>
-        <h2>Universities offering this degree: </h2>
-        <p>{ selected.universities }</p>
-        <h2>Salary: </h2>
-        <p>starting salary: { selected.salary_start }</p>
-        <p>senior salary: { selected.salary_ten_year }</p>
+        <div className='detail'>
+          <h1 className='detail-title'>{ selected.title }</h1>
+          <img className='detail-image' src = { selected.image } />
+          <p className='detail-item'>{ selected.description }</p>
+          <hr className='line' />
+          <h2 className='detail-subtitle'>Grades you need: </h2>
+          <p className='detail-item grade'>Bagrut: { selected.grade_bagrut } </p>
+          <p className='detail-item grade'>Psychometric: { selected.grade_psychometric }</p>
+          <hr className='line' />
+          <h2 className='detail-subtitle'>Universities offering this degree: </h2>
+          <p className='detail-item'>{ selected.universities }</p>
+          <hr className='line' />
+          <h2 className='detail-subtitle'>Salary: </h2>
+          <p className='detail-item salary'>starting salary: { selected.salary_start }</p>
+          <p className='detail-item salary last'>senior salary: { selected.salary_ten_year }</p>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({ careers: state.careers });
+
+CareerDetail.propTypes = {
+  selected: PropTypes.object
+};
 
 export default connect(mapStateToProps)(CareerDetail);
