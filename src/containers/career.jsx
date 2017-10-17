@@ -117,29 +117,28 @@ class Career extends Component {
   render() {
     return (
       <div>
-        <h1>This is career page</h1>
         <NavBar />
-        <div className="flip-container">
-          <div id="swipeZone" className="flipper"
+        <div className='flip-container career-card'>
+          <div id='swipeZone' className='flipper'
             onTouchStart={event => handleTouchStart(event)}
             onTouchEnd={event => this.handleTouchEnd(event)}>
-            <div className="front">
+            <div className='front'>
               <CareerCard career={this.state.careers[this.state.currentIndex]}/>
-              <Info size='2em' onClick={() => this.flipCard() } />
+              <Info className='btn-info' size='3em' onClick={() => this.flipCard() } />
             </div>
-            <div className="back">
+            <div className='back'>
               <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
-              <Back size='2em'className="btn1" onClick={() => this.flipCardBack() }/>
+              <Back className='btn-back' size='2em' onClick={() => this.flipCardBack() }/>
             </div>
           </div>
         </div>
-        <div className="btn">
-          <img src={dislikeImg} alt="dislike"
+        <div className='btn-likes'>
+          <img className='btn-image' src={dislikeImg} alt='dislike'
             onClick={() => {
               this.nextCareer();
               this.checkFlip();
             }}/>
-          <img src={likeImg} alt="like"
+          <img className='btn-image' src={likeImg} alt='like'
             onClick={() => {
               this.nextCareer();
               this.addToLocal();
