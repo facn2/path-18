@@ -1,0 +1,35 @@
+$dark-blue: #505160;
+$light-blue: #68829E;
+$dark-green: #598234;
+$light-green: #AEBD38;
+$turquoise: #38BD8A;
+
+.help-question {
+  margin-top: 0.4em;
+  font-size: 2em;
+  text-align: center;
+}
+.help-item {
+  font-size: 1.3em;
+  width: 80%;
+  display: block;
+  margin: 1em auto;
+  border-radius: 0.2em;
+  padding: 0.8em;
+  color: #FFF;
+}
+.item-1 {
+  background-color: $dark-blue;
+}
+.item-2 {
+  background-color: $light-blue;
+}
+.item-3 {
+  background-color: $dark-green;
+}
+.item-4 {
+  background-color: $light-green;
+}
+.item-5 {
+  background-color: $turquoise;
+}
