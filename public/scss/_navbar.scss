@@ -24,9 +24,10 @@ body {
   width: 2.5em;
   color: #FFF;
   text-decoration: none;
-  // &:visited, &:hover, &:focus, &:active
-  color: #FFF;
-  text-decoration: none;
+  &:visited, &:hover, &:focus, &:active {
+    color: #FFF;
+    text-decoration: none;
+    }
   }
 
 .nav-logo{

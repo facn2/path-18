@@ -54,16 +54,18 @@ body {
   margin: 2.5em auto;
   color: $light-blue;
   text-decoration: none;
-  // &:visited, &:hover, &:focus, &:active
-  color: #66829E;
-  text-decoration: none;
+  &:visited, &:hover, &:focus, &:active {
+    text-decoration: none;
+    color: #66829E;
   }
+}
 
 .btn-back {
   margin: 0 0 1em 1em;
   color: $light-blue;
-  // &:visited, &:hover, &:focus, &:active
-  color: $light-blue;
+  &:visited, &:hover, &:focus, &:active{
+    color: $light-blue;
+  }
 }
 
 .btn-likes {
