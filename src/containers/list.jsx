@@ -14,6 +14,12 @@ class List extends Component {
     this.renderList = this.renderList.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.careers !== this.props.careers) {
+      this.setState({ careers: nextProps.careers });
+    }
+  }
+
   renderList() {
     const filtered = [];
     const listItems = this.props.careers;
