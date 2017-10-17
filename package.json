@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.jsx",
-  "engines" : { "node" : ">=8.4" },
+  "engines": {
+    "node": ">=8.4"
+  },
   "scripts": {
     "bundle": "webpack --config webpack.config.js",
     "bundle:watch": "webpack --config webpack.config.js --watch",
@@ -42,6 +44,7 @@
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "webpack-sass-loaders": "^1.0.0"
   }
 }
