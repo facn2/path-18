@@ -44,21 +44,12 @@ class Career extends Component {
     this.flipCardBack = this.flipCardBack.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.careers.length !== 0) {
-      console.log('Did mount');
-      this.setState({ careers: this.props.careers });
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
-    console.log('next props careers: ', nextProps);
     if (nextProps.careers !== this.props.careers) {
       if (localStorage.liked) {
         const likedCareers = JSON.parse(localStorage.liked);
         const allCareers = nextProps.careers;
         const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
-        console.log('Not liked careers: ', notLikedCareers);
         if (notLikedCareers.length === 0) {
           this.setState({ careers: [{
             title: 'Game Over!',
@@ -93,7 +84,6 @@ class Career extends Component {
         this.setState({ careers: notLikedCareers });
       }
     } if (this.props.careers.length !== 0) {
-      console.log('Will mount');
       this.setState({ careers: this.props.careers });
     }
   }
@@ -160,9 +150,6 @@ class Career extends Component {
   }
 
   render() {
-    console.log('Career.jsx this.props: ', this.props.careers);
-    console.log('Pass this to careercard: ', this.state.careers[this.state.currentIndex]);
-    console.log('State: ', this.state);
     return (
       <div>
         <NavBar />

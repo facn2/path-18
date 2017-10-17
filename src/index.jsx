@@ -6,8 +6,6 @@ import Career from './containers/career.jsx';
 import Style from '../public/scss/style.scss';
 import store from './store.config';
 
-// const store = storeConfigure();
-
 ReactDOM.render(
   <Provider store={ store }>
     <Routes />
