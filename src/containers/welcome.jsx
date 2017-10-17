@@ -12,12 +12,12 @@ class Welcome extends Component {
 
   render() {
     return (
-      <div>
-        <img src={logoImg} alt="Path 18 Logo"/>
-        <p> Welcome to our app.
-          We aim to show you lots of jobs to help you decide on a suitable career path.
-          We also give you lots of info on the degrees and grades you need. Hope you enjoy it!</p>
-        <Link to='/career'>START</Link>
+      <div className="container">
+        <img className="logo" src={logoImg} alt="Path 18 Logo"/>
+        <p> Welcome to Path18.<br></br>
+         Path18 shows you a variety of jobs,
+         grades, degrees you need and even salary to help you guide on your career path. Enjoy!</p>
+        <Link className="startButton" to='/career'><span>START</span></Link>
       </div>
     );
   }
