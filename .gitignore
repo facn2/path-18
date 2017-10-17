@@ -2,3 +2,5 @@ node_modules/
 dist/
 config.env
 .sass-cache/
+database/db_build.js
+database/seed_data.js
