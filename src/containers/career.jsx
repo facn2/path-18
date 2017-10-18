@@ -117,9 +117,10 @@ class Career extends Component {
       });
     } else {
       this.setState({ careers: [{
-        title: 'Game Over!',
-        image: 'go.png',
-        tagline: 'No more jobs. Check your list from the top menu'
+        title: 'You finished browsing',
+        image: 'https://www.safetyfirst.com.au/wp-content/uploads/2013/12/group_bookings_page.jpg',
+        tagline: 'Check out your list of liked jobs.',
+        description: 'Check back soon for more careers.'
       }],
       currentIndex: 0
       });
