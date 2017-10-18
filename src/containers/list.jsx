@@ -14,6 +14,12 @@ class List extends Component {
     this.renderList = this.renderList.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.careers !== this.props.careers) {
+      this.setState({ careers: nextProps.careers });
+    }
+  }
+
   renderList() {
     const filtered = [];
     const listItems = this.props.careers;
@@ -32,7 +38,7 @@ class List extends Component {
           <h3>{ career.title }</h3>
           <img src="career.image" alt="lil image goes here"/>
         </Link>
-        <img src={garbageImg} alt="delete"
+        <img src={ garbageImg } alt="delete"
           onClick={(i) => {
             likedCareers.splice(i, 1);
             localStorage.setItem('liked', JSON.stringify(likedCareers));
