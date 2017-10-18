@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 import NavBar from './../components/nav_bar.jsx';
 import garbageImg from '../../public/images/garbage.png';
-import careerImg from '../../public/images/example.gif';
 
 class List extends Component {
   constructor(props) {
@@ -36,12 +35,12 @@ class List extends Component {
       <div className="listItems" key={i}>
         <div className="itemHelper">
           <Link className="listItemsLink"to={{ pathname: `career/${career.title}` }}>
-            <img className="careerImg" src={careerImg} alt="lil image goes here"/>
+            <img className="careerIcon" src={ career.icon } alt="lil image goes here"/>
             <h3 className="listTitle">{ career.title }</h3>
             <h4 className="listTagline">{ career.tagline }</h4>
           </Link>
         </div>
-        <img className="garbageImg" src={garbageImg} alt="delete"
+        <img className="garbageImg" src={ garbageImg } alt="delete"
           onClick={(i) => {
             likedCareers.splice(i, 1);
             localStorage.setItem('liked', JSON.stringify(likedCareers));
