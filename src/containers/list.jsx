@@ -34,17 +34,19 @@ class List extends Component {
 
     return filtered.map((career, i) => (
       <div className="listItems" key={i}>
-        <Link className="listItemsLink"to={{ pathname: `career/${career.title}` }}>
-          <img className="careerImg" src={careerImg} alt="lil image goes here"/>
-          <h3 className="listTitle">{ career.title }</h3>
-          <h4 className="listTagline">{ career.tagline }</h4>
-          <img className="garbageImg" src={garbageImg} alt="delete"
-            onClick={(i) => {
-              likedCareers.splice(i, 1);
-              localStorage.setItem('liked', JSON.stringify(likedCareers));
-              this.setState({ });
-            }}/>
-        </Link>
+        <div className="itemHelper">
+          <Link className="listItemsLink"to={{ pathname: `career/${career.title}` }}>
+            <img className="careerImg" src={careerImg} alt="lil image goes here"/>
+            <h3 className="listTitle">{ career.title }</h3>
+            <h4 className="listTagline">{ career.tagline }</h4>
+          </Link>
+        </div>
+        <img className="garbageImg" src={garbageImg} alt="delete"
+          onClick={(i) => {
+            likedCareers.splice(i, 1);
+            localStorage.setItem('liked', JSON.stringify(likedCareers));
+            this.setState({ });
+          }}/>
       </div>
     ));
   }

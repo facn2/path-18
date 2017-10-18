@@ -3,7 +3,11 @@ h3, h4, p, ul {
   padding: 0;
 }
 
-body{
+a:link, a:visited {
+  color:#575757;
+}
+
+body {
   background-color: #f2f2f2;
 }
 
@@ -19,10 +23,16 @@ body{
   margin-top: 1em;
   width: 100%;
   height: 5em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.itemHelper{
+  width: 80%;
 }
 
 .listItemsLink {
-  width: 100%;
   text-decoration: none;
 }
 
@@ -34,14 +44,15 @@ body{
 }
 
 .garbageImg {
-  width: 1.5em;
-  height: 1.5em;
+  width: 9%;
+  height: 2em;
   float: right;
+  padding-top: 2.5em;
 }
 
 .listTitle, .listTagline {
-  width:80%;
-  // display: inline-block
+  width:100%;
+  // tagline <45 chars
 }
 
 .listTitle {
