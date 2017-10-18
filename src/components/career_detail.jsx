@@ -11,7 +11,7 @@ class CareerDetail extends Component {
         <NavBar />
         <div className='detail'>
           <h1 className='detail-title'>{ selected.title }</h1>
-          <img className='detail-image' src = { selected.image } />
+          <img className='detail-image' src = { selected.icon } />
           <p className='detail-item'>{ selected.description }</p>
           <hr className='line' />
           <h2 className='detail-subtitle'>Grades you need: </h2>
