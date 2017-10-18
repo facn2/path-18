@@ -11,10 +11,9 @@ class Details extends Component {
   }
 
   componentWillMount() {
-    const FilteredCareer = this.props.careers.filter((career) => {
-      return career.title === this.props.match.params.title;
-    });
-    this.setState({ selectedCareer: FilteredCareer });
+    const filteredCareer = this.props.careers.filter(career =>
+      career.title === this.props.match.params.title);
+    this.setState({ selectedCareer: filteredCareer });
   }
 
   render() {
@@ -33,5 +32,9 @@ Details.propTypes = {
 const mapStateToProps = state => ({
   careers: state.careers
 });
+
+Details.propTypes = {
+  match: PropTypes.func
+};
 
 export default connect(mapStateToProps)(Details);
