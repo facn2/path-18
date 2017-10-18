@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import NavBar from './../components/nav_bar.jsx';
 import garbageImg from '../../public/images/garbage.png';
 
-
 class List extends Component {
   constructor(props) {
     super(props);
@@ -33,12 +32,15 @@ class List extends Component {
     });
 
     return filtered.map((career, i) => (
-      <div key={i}>
-        <Link to={{ pathname: `career/${career.title}` }}>
-          <h3>{ career.title }</h3>
-          <img src="career.image" alt="lil image goes here"/>
-        </Link>
-        <img src={ garbageImg } alt="delete"
+      <div className="listItems" key={i}>
+        <div className="itemHelper">
+          <Link className="listItemsLink"to={{ pathname: `career/${career.title}` }}>
+            <img className="careerIcon" src={ career.icon } alt="lil image goes here"/>
+            <h3 className="listTitle">{ career.title }</h3>
+            <h4 className="listTagline">{ career.tagline }</h4>
+          </Link>
+        </div>
+        <img className="garbageImg" src={ garbageImg } alt="delete"
           onClick={(i) => {
             likedCareers.splice(i, 1);
             localStorage.setItem('liked', JSON.stringify(likedCareers));
@@ -52,8 +54,7 @@ class List extends Component {
     return (
       <div>
         <NavBar />
-        <h1>Here are your liked careers</h1>
-        <ul>
+        <ul className="listContainer" >
           { this.renderList() }
         </ul>
       </div>

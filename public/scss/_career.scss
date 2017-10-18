@@ -1,13 +1,15 @@
 $dark-blue: #505160;
 $grey: #F5F5F5;
 $Roboto: "Roboto", sans-serif;
+$round-border: 0.5em;
 
 .career-card {
+  border-radius: $round-border;
   background: $grey;
   box-shadow: 0 0.2em 0.2em rgba(0, 0, 0, 0.25);
   display: block;
   height: 60vh;
-  margin: 1em auto;
+  margin: 1.5em auto;
   position: relative;
   width: 100%;
 }

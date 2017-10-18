@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { autoRehydrate, persistStore } from 'redux-persist';
 import reducers from './reducers/index';
 
+
 const store = createStore(
   reducers, undefined, compose(
     applyMiddleware(thunk, logger),
