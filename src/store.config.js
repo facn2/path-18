@@ -1,6 +1,6 @@
 import { createStore } from 'redux';
 import reducers from './reducers/index';
-import careerImg from './../public/images/imageedit_1_3201666448.gif';
+import careerImg from './../public/images/example.gif';
 
 const storeConfigure = () => {
   const initialStore = {
