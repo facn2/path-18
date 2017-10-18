@@ -11,10 +11,10 @@ class Details extends Component {
   }
 
   componentWillMount() {
-    const FilteredCareer = this.props.careers.filter((career) => {
+    const filteredCareer = this.props.careers.filter((career) => {
       return career.title === this.props.match.params.title;
     });
-    this.setState({ selectedCareer: FilteredCareer });
+    this.setState({ selectedCareer: filteredCareer });
   }
 
   render() {
