@@ -13,7 +13,7 @@ class CareerDetail extends Component {
       <div>
         <NavBar />
         <h1>{ selected.title }</h1>
-        <img src = { selected.image } />
+        <img src = { selected.icon } />
         <p>{ selected.description }</p>
         <h2>Grades you need: </h2>
         <p>Bagrut: { selected.grade_bagrut }</p>
