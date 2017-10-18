@@ -10,7 +10,7 @@ import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
 import likeImg from '../../public/images/like.png';
 import dislikeImg from '../../public/images/dislike.png';
-import { flipCard, flipCardBack, checkFlip } from '../logic/career.logic';
+import { flipCard, flipCardBack, checkFlip, addToLocal } from '../logic/career.logic';
 
 let touchStart = 0;
 let touchEnd = 0;
@@ -96,7 +96,7 @@ class Career extends Component {
       this.nextCareer();
     }
     if (touchEnd > touchStart + 50) {
-      this.addToLocal();
+      addToLocal(this.state);
       this.nextCareer();
     }
   }
@@ -115,20 +115,6 @@ class Career extends Component {
       }],
       currentIndex: 0
       });
-    }
-  }
-
-  addToLocal() {
-    const career = this.state.careers[this.state.currentIndex];
-    if (localStorage.liked) {
-      const likedCareers = JSON.parse(localStorage.liked);
-      if (!likedCareers.includes(career)) {
-        likedCareers.push(career);
-        localStorage.setItem('liked', JSON.stringify(likedCareers));
-      }
-    } else {
-      const likedCareers = [this.state.careers[this.state.currentIndex]];
-      localStorage.setItem('liked', JSON.stringify(likedCareers));
     }
   }
 
@@ -159,7 +145,7 @@ class Career extends Component {
           <img className='btn-image' src={likeImg} alt='like'
             onClick={() => {
               this.nextCareer();
-              this.addToLocal();
+              addToLocal(this.state);
               checkFlip();
             }}/>
         </div>
