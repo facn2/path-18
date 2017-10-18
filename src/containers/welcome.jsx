@@ -31,5 +31,4 @@ const mapDispatchToProps = {
   fetchCareers
 };
 
-
 export default connect(null, mapDispatchToProps)(Welcome);
