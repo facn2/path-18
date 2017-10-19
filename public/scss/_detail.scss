@@ -1,6 +1,7 @@
 $dark-blue: #505160;
 $grey: #F5F5F5;
 
+
 .detail {
   line-height: 1.2em;
   background-color: $grey;
@@ -20,21 +21,23 @@ $grey: #F5F5F5;
   display: block;
   margin: 1em auto;
 }
+
 .detail-subtitle {
   font-size: 1.2em;
 }
 .detail-item {
-  font-size: 1em;
+  font-size: 1.1em;
 }
 .grade, .salary {
-  margin-top: -0.5em;
-}
-.last {
-  padding: 0.2em;
+  margin-top: 0;
 }
 .line {
   border: 0;
   height: 0.05em;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   margin: 0.2 0;
+}
+
+.detail-helper{
+  padding: 1.1em;
 }

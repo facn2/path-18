@@ -3,6 +3,9 @@ $grey: #F5F5F5;
 $Roboto: "Roboto", sans-serif;
 $round-border: 0.5em;
 
+h2 {
+  margin-bottom: 0.3em;
+}
 .career-card {
   border-radius: $round-border;
   background: $grey;
@@ -28,7 +31,7 @@ $round-border: 0.5em;
 }
 
 .career-tagline{
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-bottom: 0;
   text-align: center;
   width: 100%;
@@ -37,27 +40,19 @@ $round-border: 0.5em;
 .career-description {
   font-size: 1.2em;
   margin: 1em 0.5em;
-  text-align: right;
+  text-align: center;
   width: 90%;
 }
 
-.btn-info {
+.btn-info, .btn-back {
   width: 100%;
   display: block;
-  margin: 2.5em auto;
+  margin: 1em auto;
   color: $light-blue;
   text-decoration: none;
   &:visited, &:hover, &:focus, &:active {
     text-decoration: none;
     color: #66829E;
-  }
-}
-
-.btn-back {
-  margin: 0 0 1em 1em;
-  color: $light-blue;
-  &:visited, &:hover, &:focus, &:active{
-    color: $light-blue;
   }
 }
 
