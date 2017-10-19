@@ -10,6 +10,7 @@ import CareerCard from './../components/career_card.jsx';
 import CareerInfo from './../components/career_info.jsx';
 import likeImg from '../../public/images/like.png';
 import dislikeImg from '../../public/images/dislike.png';
+import { flipCard, flipCardBack, checkFlip, addToLocal } from '../logic/career.logic';
 
 let touchStart = 0;
 let touchEnd = 0;
@@ -38,10 +39,7 @@ class Career extends Component {
         }
       ]
     };
-    this.addToLocal = this.addToLocal.bind(this);
     this.nextCareer = this.nextCareer.bind(this);
-    this.flipCard = this.flipCard.bind(this);
-    this.flipCardBack = this.flipCardBack.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,13 +49,18 @@ class Career extends Component {
         const allCareers = nextProps.careers;
         const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
         if (notLikedCareers.length === 0) {
-          this.setState({ careers: [{
-            title: 'Game Over!',
-            image: 'go.png',
-            tagline: 'No more jobs. Check your list from the top menu'
-          }],
-          currentIndex: 0
-          });
+          this.setState(
+            {
+              careers: [
+                {
+                  title: 'You finished browsing',
+                  image: 'https://www.safetyfirst.com.au/wp-content/uploads/2013/12/group_bookings_page.jpg',
+                  tagline: 'Check out your list of liked jobs',
+                  description: 'Check back soon for more careers.'
+                }
+              ],
+              currentIndex: 0
+            });
         } else {
           this.setState({ careers: notLikedCareers });
         }
@@ -74,9 +77,10 @@ class Career extends Component {
       const notLikedCareers = _.differenceBy(allCareers, likedCareers, 'title');
       if (notLikedCareers.length === 0) {
         this.setState({ careers: [{
-          title: 'Game Over!',
-          image: 'go.png',
-          tagline: 'No more jobs. Check your list from the top menu'
+          title: 'You finished browsing',
+          image: 'https://www.safetyfirst.com.au/wp-content/uploads/2013/12/group_bookings_page.jpg',
+          tagline: 'Check out your list of liked jobs.',
+          description: 'Check back soon for more careers.'
         }],
         currentIndex: 0
         });
@@ -98,7 +102,7 @@ class Career extends Component {
       this.nextCareer();
     }
     if (touchEnd > touchStart + 50) {
-      this.addToLocal();
+      addToLocal(this.state);
       this.nextCareer();
     }
   }
@@ -111,41 +115,13 @@ class Career extends Component {
       });
     } else {
       this.setState({ careers: [{
-        title: 'Game Over!',
-        image: 'go.png',
-        tagline: 'No more jobs. Check your list from the top menu'
+        title: 'You finished browsing',
+        image: 'https://www.safetyfirst.com.au/wp-content/uploads/2013/12/group_bookings_page.jpg',
+        tagline: 'Check out your list of liked jobs.',
+        description: 'Check back soon for more careers.'
       }],
       currentIndex: 0
       });
-    }
-  }
-
-  flipCard() {
-    document.querySelector('.flipper').classList.add('flip');
-  }
-
-  flipCardBack() {
-    document.querySelector('.flipper').classList.remove('flip');
-  }
-
-  checkFlip() {
-    const flippedCard = document.querySelector('.flipper');
-    if (flippedCard.classList.contains('flip')) {
-      document.querySelector('.flipper').classList.remove('flip');
-    }
-  }
-
-  addToLocal() {
-    const career = this.state.careers[this.state.currentIndex];
-    if (localStorage.liked) {
-      const likedCareers = JSON.parse(localStorage.liked);
-      if (!likedCareers.includes(career)) {
-        likedCareers.push(career);
-        localStorage.setItem('liked', JSON.stringify(likedCareers)); // (key of the localstorage, data sent to the storage
-      }
-    } else {
-      const likedCareers = [this.state.careers[this.state.currentIndex]];
-      localStorage.setItem('liked', JSON.stringify(likedCareers));
     }
   }
 
@@ -159,11 +135,11 @@ class Career extends Component {
             onTouchEnd={event => this.handleTouchEnd(event)}>
             <div className='front'>
               <CareerCard career={this.state.careers[this.state.currentIndex]}/>
-              <Info className='btn-info' size='3em' onClick={() => this.flipCard() } />
+              <Info className='btn-info' size='3em' onClick={() => flipCard() } />
             </div>
             <div className='back'>
               <CareerInfo career={this.state.careers[this.state.currentIndex]}/>
-              <Back className='btn-back' size='2em' onClick={() => this.flipCardBack() }/>
+              <Back className='btn-back' size='2em' onClick={() => flipCardBack() }/>
             </div>
           </div>
         </div>
@@ -171,13 +147,13 @@ class Career extends Component {
           <img className='btn-image' src={dislikeImg} alt='dislike'
             onClick={() => {
               this.nextCareer();
-              this.checkFlip();
+              checkFlip();
             }}/>
           <img className='btn-image' src={likeImg} alt='like'
             onClick={() => {
               this.nextCareer();
-              this.addToLocal();
-              this.checkFlip();
+              addToLocal(this.state);
+              checkFlip();
             }}/>
         </div>
       </div>
