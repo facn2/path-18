@@ -16,8 +16,8 @@ class CareerDetail extends Component {
             <p className='detail-item'>{ selected.description }</p>
             <hr className='line' />
             <h2 className='detail-subtitle'>Grades you need: </h2>
-            <p className='detail-item grade'>Bagrut: { selected.grade_bagrut } </p>
-            <p className='detail-item grade'>Psychometric: { selected.grade_psychometric }</p>
+            <p className='detail-item grade'>Bagrut: { selected.grade_bagrut } <span className="current-grade"> 11.30 </span></p>
+            <p className='detail-item grade'>Psychometric: { selected.grade_psychometric } <span className="current-grade"> 790 </span></p>
             <hr className='line' />
             <h2 className='detail-subtitle'>Universities offering this degree: </h2>
             <p className='detail-item'>{ selected.universities }</p>

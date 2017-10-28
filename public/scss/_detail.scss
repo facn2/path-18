@@ -21,7 +21,6 @@ $grey: #F5F5F5;
   display: block;
   margin: 1em auto;
 }
-
 .detail-subtitle {
   font-size: 1.2em;
 }
@@ -37,7 +36,10 @@ $grey: #F5F5F5;
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
   margin: 0.2 0;
 }
-
 .detail-helper{
   padding: 1.1em;
+}
+.current-grade {
+  color: green;
+  float: right;
 }
