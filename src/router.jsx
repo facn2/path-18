@@ -5,7 +5,7 @@ import Career from './containers/career.jsx';
 import Detail from './containers/detail.jsx';
 import List from './containers/list.jsx';
 import Help from './components/help.jsx';
-
+import Admin from './components/admin.jsx';
 
 const Routes = () => (
   <BrowserRouter>
@@ -15,6 +15,7 @@ const Routes = () => (
       <Route path='/career/:title' exact component={Detail} />
       <Route path='/list' exact component={List} />
       <Route path='/help' exact component={Help} />
+      <Route path='/admin' exact component={Admin} />
     </Switch>
   </BrowserRouter>
 );
